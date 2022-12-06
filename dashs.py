@@ -33,7 +33,7 @@ def state_crimes(crimes = crime):
     df_states = df[crime + ['state']].groupby(['state']).sum().reset_index()
     x = df_states['state']
     y = df_states[crimes]
-    df_states.append(go.Bar(x=x, y=y,))
+    df_states.append(px.bar(x=x, y=y,))
     
     layout = go.Layout(
         width=1000,
