@@ -2,5 +2,4 @@ streamlit==1.15.2
 pandas 
 numpy
 plotly
-urllib
 json
