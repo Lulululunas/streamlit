@@ -8,8 +8,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.express as px
-from urllib.request import urlopen
-import json
 
 
 # In[ ]:
@@ -20,18 +18,11 @@ df.head(4)
 
 
 # In[ ]:
-
-
 st.title("Crimes in US Communities Dashboard")
-st.write("""This dashboard will present the spread of COVID-19 in the world by visualizing the timeline of the total cases and deaths. As well as the total number of vaccinated people.""")
+st.write("""This dashboard will present how crimes correlate with variables""")
 
 # Настройка боковой панели
 st.sidebar.title("About")
-st.sidebar.info(
-    """
-    This app is Open Source dashboard.
-    """
-)
 st.sidebar.info(" The github link can be found "
-                "[here]().")
+                "[here](https://github.com/Lulululunas/streamlit/blob/main/dashs.py)")
 
