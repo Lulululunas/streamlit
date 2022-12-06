@@ -30,10 +30,9 @@ crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'la
 
 def state_crimes(crimes = crime):
     df_states = df[crime + ['state']].groupby(['state']).sum().reset_index()
-    for state in states:
-        x = df_states.loc[state][name_x]
-        y = df_states.loc[state][name_y]
-        data_states.append(go.Scatter(x=x, y=y, mode = 'markers'))
+    x = df_states['state']
+    y = df_states[crimes]
+    df_states.append(go.Bar(x=x, y=y,))
     
     layout = go.Layout(
         width=1000,
