@@ -33,15 +33,15 @@ def state_crimes(crimes = crime):
     df_states = df[crime + ['state']].groupby(['state']).sum().reset_index()
     x = df_states['state']
     y = df_states[crimes]
-    df_states.append(px.bar(x=x, y=y,))
     
     layout = go.Layout(
         width=1000,
         height=600
     )
 
-    plot = go.Figure(data = df_states, layout = layout)
-    return plot
+    fig = go.Figure( layout = layout)
+    fig.add_trace(go.Bar(x=x, y=y,))
+    return fig
   
 select_crime = st.sidebar.selectbox('Select crime', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 st.plotly_chart(state_crimes(select_crime), use_container_width=True)  
