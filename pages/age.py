@@ -15,7 +15,7 @@ age = ['12 to 21', '12 to 29', '16 to 24', 'above 60']
 
 df_new = df[['ViolentCrimesPerPop', 'agePct12t21', 'agePct12t29', 'agePct16t24', 'agePct65up']].copy()
 
-df_new = df_new.set_axis(['ViolentCrimes']+ages, axis=1, copy=False)
+df_new = df_new.set_axis(['ViolentCrimes']+age, axis=1, copy=False)
 
 def ages_crimes(ages):
     if ages == 'all':
