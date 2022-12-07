@@ -30,7 +30,7 @@ crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'la
 df_new = df[['murdPerPop', 'rapesPerPop', 'robbbPerPop', 'assaultPerPop', 'arsonsPerPop', 'autoTheftPerPop', \
          'larcPerPop', 'burglPerPop', 'state']].copy()
 
-df_new.set_axis(crime+['state'], axis=1, inplace=True)
+df_new = df_new.set_axis(crime+['state'], axis=1, inplace=True)
 
 def state_crimes(crimes = crime):
     if crimes == 'all':
