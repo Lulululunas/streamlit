@@ -25,7 +25,7 @@ def population_crimes(crimes):
         crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
         fig = px.scatter(x=df['population'].values, y=df[crime].sum(axis=1).values, trendline="ols")
     else:
-        st.title("Correlation between", crimes," and population")
+        st.title("Correlation between"+crimes+" and population")
         st.write("""How""", crimes, """correlate with population""")
         df_pop = df[[crimes] + ['population']]
         fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols")
