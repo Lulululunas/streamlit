@@ -20,7 +20,7 @@ df_new = df_new.set_axis(['ViolentCrimes']+age, axis=1, copy=False)
 def ages_crimes(ages):
     st.title("Violent crimes and age "+ages)
     st.write("""How violent crimes per capita correlate with age groups""", ages)
-    fig = px.scatter(x=df_new['ViolentCrimes'].values, y=df_new[ages].values, trendline="ols")
+    fig = px.scatter(x=df_new['ViolentCrimes'].values, y=df_new[ages].values, trendline="ols", color_continuous_scale=px.colors.sequential.Viridis)
     fig.update_layout(xaxis_title="Violent crimes per capita",
                   yaxis_title="Percentage of the population")
     fig.update_traces(marker_size=8)
