@@ -30,22 +30,12 @@ st.sidebar.info(" The github link can be found "
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
 
 def state_crimes(crimes = crime):
-    df_states = df[crime + ['state']].groupby(['state']).sum()
-    x = df_states.index
-    y = df_states[crimes]
-    
-#     layout = go.Layout(
-#         width=1000,
-#         height=600
-#     )
-
-    fig = go.Figure()
-    fig.add_trace(go.Bar(x=x, y=y,))
-    return fig
+    df_states = df[crime + ['state']].groupby(['state']).sum().loc[:,[crimes]]
+    return df_states
 
 select_crime = st.sidebar.selectbox('Crimes amoung states. Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 if select_crime == 'all':
     st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
-    st.plotly_chart(state_crimes(select_crime), use_container_width=False)
+    st.bar_chart(state_crimes(select_crime))
  
