@@ -26,7 +26,7 @@ st.sidebar.title("About")
 st.sidebar.info(" The github link can be found "
                 "[here](https://github.com/Lulululunas/streamlit/blob/main/dashs.py)")
 
-colors = ['Maroon', 'DarkRed', 'FireBrick', 'Brown', 'IndianRed','DarkSalmon', 'LightSalmon', 'Linen']
+colors = ['LightSalmon', 'DarkSalmon', 'IndianRed', 'Brown',  'DarkSalmon',  'FireBrick', 'Maroon', 'DarkRed']
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
 
 fig = go.Figure()
