@@ -34,12 +34,12 @@ def state_crimes(crimes = crime):
     x = df_states.index
     y = df_states[crimes]
     
-    layout = go.Layout(
-        width=1000,
-        height=600
-    )
+#     layout = go.Layout(
+#         width=1000,
+#         height=600
+#     )
 
-    fig = go.Figure( layout = layout)
+    fig = go.Figure()
     fig.add_trace(go.Bar(x=x, y=y,))
     return fig
 
