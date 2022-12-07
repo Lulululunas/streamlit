@@ -24,6 +24,7 @@ def ages_crimes(ages):
     fig.update_layout(xaxis_title="Violent crimes per capita",
                   yaxis_title="Percentage of the population")
     fig.update_traces(marker_size=8)
+    fig.update(layout_showscale=False)
     return fig
 
 select_crime = st.sidebar.selectbox('Select:', ('12 to 21', '12 to 29', '16 to 24', 'above 60'))
