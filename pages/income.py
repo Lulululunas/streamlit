@@ -22,7 +22,7 @@ def population_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and median income")
         st.write("""How a level of crimes per capita correlate with income""")
-        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].sum(axis=1).values, trendline="ols")
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].mean(axis=1).values, trendline="ols")
     else:
         st.title("Correlation between "+crimes+" and median income")
         st.write("""How""", crimes, """ per capita correlate with income""")
