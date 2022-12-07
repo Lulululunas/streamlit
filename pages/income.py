@@ -22,14 +22,17 @@ def population_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and median income")
         st.write("""How a level of crimes per capita correlate with income""")
-        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].mean(axis=1).values, trendline="ols")
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", color=df['medIncome'].values ,\
+                         color_discrete_sequence=px.colors.qualitative.Antique)
     else:
         st.title("Correlation between "+crimes+" and median income")
         st.write("""How""", crimes, """ per capita correlate with income""")
-        fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols")
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols",  color=df['medIncome'].values ,\
+                         color_discrete_sequence=px.colors.qualitative.Antique)
     fig.update_layout(xaxis_title="Median income",
                   yaxis_title="Crimes per capita")
     fig.update_traces(marker_size=8)
+    fig.update_coloraxes(showscale=False)
     return fig
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
