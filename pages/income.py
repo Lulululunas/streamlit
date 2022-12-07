@@ -18,11 +18,11 @@ df_new = df[['murdPerPop', 'rapesPerPop', 'robbbPerPop', 'assaultPerPop', 'arson
 
 df_new.set_axis(crime, axis=1, inplace=True)
 
-def population_crimes(crimes):
+def income_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and median income")
         st.write("""How a level of crimes per capita correlate with income""")
-        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", color=df['medIncome'].values ,\
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", \
                          color_discrete_sequence=px.colors.qualitative.Antique)
     else:
         st.title("Correlation between "+crimes+" and median income")
@@ -36,4 +36,4 @@ def population_crimes(crimes):
     return fig
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
-st.plotly_chart(population_crimes(select_crime), use_container_width=True)
+st.plotly_chart(income_crimes(select_crime), use_container_width=True)
