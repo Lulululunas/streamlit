@@ -34,9 +34,9 @@ df_new = df_new.set_axis(crime+['state'], axis=1, copy=False)
 
 def state_crimes(crimes = crime):
     if crimes == 'all':
-        df_states = df_new[crime + ['state']].groupby(['state']).sum()
+        df_states = df_new[crime + ['state']].groupby(['state']).mean()
     else:
-        df_states = df_new[crime + ['state']].groupby(['state']).sum().loc[:,[crimes]]
+        df_states = df_new[crime + ['state']].groupby(['state']).mean().loc[:,[crimes]]
     return df_states
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
