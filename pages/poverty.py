@@ -28,7 +28,7 @@ def population_crimes(crimes):
         st.write("""How""", crimes, """ per capita correlate with percentage of population under poverty""")
         fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols")
     fig.update_layout(xaxis_title="Percentage of population under poverty",
-                  yaxis_title="Number of crimes")
+                  yaxis_title="Crimes per capita")
     fig.update_traces(marker_size=8)
     return fig
 
