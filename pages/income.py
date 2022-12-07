@@ -27,7 +27,7 @@ def income_crimes(crimes):
     else:
         st.title("Correlation between "+crimes+" and median income")
         st.write("""How""", crimes, """ per capita correlate with income""")
-        fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols",  color=df['medIncome'].values ,\
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols", \
                          color_discrete_sequence=px.colors.qualitative.Antique)
     fig.update_layout(xaxis_title="Median income",
                   yaxis_title="Crimes per capita")
