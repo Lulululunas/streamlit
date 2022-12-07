@@ -47,5 +47,5 @@ select_crime = st.sidebar.selectbox('Crimes amoung states. Select:', ('all', 'mu
 if select_crime == 'all':
     st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
-    st.plotly_chart(state_crimes(select_crime))
+    st.plotly_chart(state_crimes(select_crime), use_container_width=False)
  
