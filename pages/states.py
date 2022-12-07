@@ -22,9 +22,7 @@ st.title("Crimes in US states")
 st.write("""How crimes correlate with states""")
 
 # Настройка боковой панели
-st.sidebar.title("About")
-st.sidebar.info(" The github link can be found "
-                "[here](https://github.com/Lulululunas/streamlit/blob/main/dashs.py)")
+st.sidebar.title("Crimes amoung states")
 
 
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
@@ -33,7 +31,7 @@ def state_crimes(crimes = crime):
     df_states = df[crime + ['state']].groupby(['state']).sum().loc[:,[crimes]]
     return df_states
 
-select_crime = st.sidebar.selectbox('Crimes amoung states. Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
+select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 if select_crime == 'all':
     st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
