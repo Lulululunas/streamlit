@@ -23,13 +23,13 @@ def population_crimes(crimes):
         st.title("Crimes and population")
         st.write("""How crimes correlate with population""")
         crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
-        fig = px.scatter(x=df['population'].values, y=df[crime].sum(axis=1).values, trendline="ols",  color=df['population'].values ,\
+        fig = px.scatter(x=df['population'].values, y=df[crime].sum(axis=1).values, trendline="ols", \
                          color_discrete_sequence=px.colors.qualitative.Dark2)
     else:
         st.title("Correlation between "+crimes+" and population")
         st.write("""How""", crimes, """correlate with population""")
         df_pop = df[[crimes] + ['population']]
-        fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols", color=df_pop['population'].values ,\
+        fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols",\
                          color_discrete_sequence=px.colors.qualitative.Dark2)
     fig.update_layout(xaxis_title="Number of population",
                   yaxis_title="Number of crimes")
