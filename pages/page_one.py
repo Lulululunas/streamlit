@@ -44,7 +44,7 @@ def state_crimes(crimes = crime):
     return fig
 
 select_crime = st.sidebar.selectbox('Crimes amoung states. Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
-if select_crime = 'all':
+if select_crime == 'all':
     st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
     st.bar_chart(state_crimes(select_crime), use_container_width=True)
