@@ -9,7 +9,7 @@ df = pd.read_csv('crimedata.csv', sep=',')
 df.dropna(inplace = True)
 
 # Настройка боковой панели
-st.sidebar.title("Crimes and income")
+st.sidebar.title("Crimes and age")
 
 age = ['12 to 21', '12 to 29', '16 to 24', 'above 60']
 
