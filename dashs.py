@@ -43,5 +43,5 @@ def state_crimes(crimes = crime):
     fig.add_trace(go.Bar(x=x, y=y,))
     return fig
   
-select_crime = st.sidebar.selectbox('Select crime', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
+select_crime = st.sidebar.selectbox('The level of crime amoung states. Select a type of crime:', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 st.plotly_chart(state_crimes(select_crime), use_container_width=True)  
