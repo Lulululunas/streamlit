@@ -26,11 +26,12 @@ st.sidebar.title("About")
 st.sidebar.info(" The github link can be found "
                 "[here](https://github.com/Lulululunas/streamlit/blob/main/dashs.py)")
 
-
+colors = ['Maroon', 'DarkRed', 'FireBrick', 'Brown', 'IndianRed','DarkSalmon', 'LightSalmon', 'Linen']
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
 
 fig = go.Figure()
-fig.add_trace(px.pie(values=df[crime].sum(axis=0).values, labels=df[crime].sum(axis=0).index, color_discrete_sequence=px.colors.sequential.RdBu))
+fig.add_trace(go.Pie(values=df[crime].sum(axis=0).values, labels=df[crime].sum(axis=0).index, color_discrete_sequence=px.colors.sequential.RdBu))
+fig.update_traces(marker=dict(colors=colors))
 fig.update_traces(textposition='inside')
 fig.update_coloraxes(showscale=False)
 
