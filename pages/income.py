@@ -11,18 +11,22 @@ df.dropna(inplace = True)
 # Настройка боковой панели
 st.sidebar.title("Crimes and income")
 
+crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
+
+df_new = df[['murdPerPop', 'rapesPerPop', 'robbbPerPop', 'assaultPerPop', 'arsonsPerPop', 'autoTheftPerPop', \
+         'larcPerPop', 'burglPerPop']].copy()
+
+df_new.set_axis(crime, axis=1, inplace=True)
 
 def population_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and median income")
         st.write("""How crimes correlate with income""")
-        crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
-        fig = px.scatter(x=df['medIncome'].values, y=df[crime].sum(axis=1).values, trendline="ols")
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crime].sum(axis=1).values, trendline="ols")
     else:
         st.title("Correlation between "+crimes+" and median income")
-        st.write("""How""", crimes, """correlate with income""")
-        df_pop = df[[crimes] + ['medIncome']]
-        fig = px.scatter(x=df_pop['medIncome'].values, y=df_pop[crimes].values, trendline="ols")
+        st.write("""How""", crimes, """ per population correlate with income""")
+        fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols")
     fig.update_layout(xaxis_title="Median income",
                   yaxis_title="Number of crimes")
     fig.update_traces(marker_size=8)
