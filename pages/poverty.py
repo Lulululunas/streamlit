@@ -28,7 +28,7 @@ def population_crimes(crimes):
         st.title("Correlation between "+crimes+" and poverty")
         st.write("""How""", crimes, """ per capita correlate with percentage of population under poverty""")
         fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols", color=df['PctPopUnderPov'].values ,\
-                         color_continuous_scale=px.colors.sequential.Viridi)
+                         color_continuous_scale=px.colors.sequential.Viridis)
     fig.update_layout(xaxis_title="Percentage of population under poverty",
                   yaxis_title="Crimes per capita")
     fig.update_traces(marker_size=8)
