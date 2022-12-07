@@ -18,8 +18,8 @@ df = pd.read_csv('crimedata.csv', sep=',')
 
 
 # In[ ]:
-st.title("Crimes in US Communities Dashboard")
-st.write("""This dashboard will present how crimes correlate with variables""")
+st.title("Crimes in US states")
+st.write("""How crimes correlate with states""")
 
 # Настройка боковой панели
 st.sidebar.title("About")
@@ -47,5 +47,5 @@ select_crime = st.sidebar.selectbox('Crimes amoung states. Select:', ('all', 'mu
 if select_crime == 'all':
     st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
-    st.plotly_chart(state_crimes(select_crime), use_container_width=True)
+    st.plotly_chart(state_crimes(select_crime))
  
