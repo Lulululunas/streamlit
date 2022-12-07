@@ -19,12 +19,12 @@ df_new = df_new.set_axis(['ViolentCrimes']+ages, axis=1, copy=False)
 
 def ages_crimes(ages):
     if ages == 'all':
-        st.title("Violent crimes and ages")
-        st.write("""How violent crimes per capita correlate with ages above 12""")
+        st.title("Violent crimes and age")
+        st.write("""How violent crimes per capita correlate with age above 12""")
         fig = px.scatter(x=df_new['ViolentCrimes'].values, y=df_new[age].sum(axis=1).values, trendline="ols")
     else:
-        st.title("Violent crimes and ages "+ages)
-        st.write("""How violent crimes per capita correlate with ages""", ages)
+        st.title("Violent crimes and age "+ages)
+        st.write("""How violent crimes per capita correlate with age groups""", ages)
         fig = px.scatter(x=df_new['ViolentCrimes'].values, y=df_new[ages].values, trendline="ols")
     fig.update_layout(xaxis_title="Violent crimes per capita",
                   yaxis_title="Percentage of the population")
