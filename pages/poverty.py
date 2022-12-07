@@ -22,14 +22,17 @@ def population_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and poverty")
         st.write("""How a level of crimes per capita correlate with percentage of population under poverty""")
-        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crime].mean(axis=1).values, trendline="ols")
+        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", color=df['PctPopUnderPov'].values ,\
+                         color_continuous_scale=px.colors.sequential.Viridis)
     else:
         st.title("Correlation between "+crimes+" and poverty")
         st.write("""How""", crimes, """ per capita correlate with percentage of population under poverty""")
-        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols")
+        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols", color=df['PctPopUnderPov'].values ,\
+                         color_continuous_scale=px.colors.sequential.Viridi)
     fig.update_layout(xaxis_title="Percentage of population under poverty",
                   yaxis_title="Crimes per capita")
     fig.update_traces(marker_size=8)
+    fig.update_coloraxes(showscale=False)
     return fig
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
