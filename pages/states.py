@@ -33,7 +33,7 @@ def state_crimes(crimes = crime):
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 if select_crime == 'all':
-    st.bar_chart(df[crime + ['state']].groupby(['state']).sum(), x='State', y='Number of crimes')
+    st.bar_chart(df[crime + ['state']].groupby(['state']).sum())
 else:
-    st.bar_chart(state_crimes(select_crime), x='State', y='Number of crimes')
+    st.bar_chart(state_crimes(select_crime))
  
