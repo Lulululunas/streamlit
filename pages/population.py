@@ -14,19 +14,18 @@ import plotly.graph_objs as go
 df = pd.read_csv('crimedata.csv', sep=',')
 df.dropna(inplace = True)
 
-st.title("Crimes and population")
-# st.write("""How crimes correlate with population""")
-
 # Настройка боковой панели
 st.sidebar.title("Crimes and population")
 
 
 def population_crimes(crimes):
     if crimes == 'all':
+        st.title("Crimes and population")
         st.write("""How crimes correlate with population""")
         crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
         fig = px.scatter(x=df['population'].values, y=df[crime].sum(axis=1).values, trendline="ols")
     else:
+        st.title("Correlation between", crimes," and population")
         st.write("""How""", crimes, """correlate with population""")
         df_pop = df[[crimes] + ['population']]
         fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols")
