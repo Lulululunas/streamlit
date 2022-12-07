@@ -21,16 +21,18 @@ st.write("""How crimes correlate with population""")
 st.sidebar.title("Crimes and population")
 
 
-crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
-
 def population_crimes(crimes):
-    df_pop = df[[crimes] + ['population']]
-    fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols")
+    if crimes == 'all':
+        crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
+        fig = px.scatter(x=df['population'].values, y=df[crime].sum(axis=1).values, trendline="ols")
+    else:
+        df_pop = df[[crimes] + ['population']]
+        fig = px.scatter(x=df_pop['population'].values, y=df_pop[crimes].values, trendline="ols")
     fig.update_layout(xaxis_title="Number of population",
                   yaxis_title="Number of crimes")
     fig.update_traces(marker_size=8)
     return fig
 
-select_crime = st.sidebar.selectbox('Select a crime:', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
+select_crime = st.sidebar.selectbox('Crimes and population. Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 st.plotly_chart(population_crimes(select_crime), use_container_width=True)
 
