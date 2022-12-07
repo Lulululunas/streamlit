@@ -27,13 +27,18 @@ st.sidebar.title("Crimes amoung states")
 
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
 
+df_new = df[['murdPerPop', 'rapesPerPop', 'robbbPerPop', 'assaultPerPop', 'arsonsPerPop', 'autoTheftPerPop', \
+         'larcPerPop', 'burglPerPop', 'state']].copy()
+
+df_new.set_axis(crime+['state'], axis=1, inplace=True)
+
 def state_crimes(crimes = crime):
-    df_states = df[crime + ['state']].groupby(['state']).sum().loc[:,[crimes]]
+    if crimes == 'all':
+        df_states = df_new[crime + ['state']].groupby(['state']).sum()
+    else:
+        df_states = df_new[crime + ['state']].groupby(['state']).sum().loc[:,[crimes]]
     return df_states
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
-if select_crime == 'all':
-    st.bar_chart(data = df[crime + ['state']].groupby(['state']).sum())
-else:
     st.bar_chart(data = state_crimes(select_crime))
  
