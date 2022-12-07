@@ -18,9 +18,7 @@ st.title("Crimes and population")
 st.write("""How crimes correlate with population""")
 
 # Настройка боковой панели
-st.sidebar.title("About")
-st.sidebar.info(" The github link can be found "
-                "[here](https://github.com/Lulululunas/streamlit/blob/main/dashs.py)")
+st.sidebar.title("Crimes and population")
 
 
 crime = ['murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries']
@@ -33,6 +31,6 @@ def population_crimes(crimes):
     fig.update_traces(marker_size=8)
     return fig
 
-select_crime = st.sidebar.selectbox('Crimes and population. Select:', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
+select_crime = st.sidebar.selectbox('Select a crime:', ('murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
 st.plotly_chart(population_crimes(select_crime), use_container_width=True)
 
