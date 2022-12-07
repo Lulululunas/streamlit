@@ -18,16 +18,16 @@ df_new = df[['murdPerPop', 'rapesPerPop', 'robbbPerPop', 'assaultPerPop', 'arson
 
 df_new.set_axis(crime, axis=1, inplace=True)
 
-def population_crimes(crimes):
+def poverty_crimes(crimes):
     if crimes == 'all':
         st.title("Crimes and poverty")
         st.write("""How a level of crimes per capita correlate with percentage of population under poverty""")
-        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", color=df['PctPopUnderPov'].values ,\
+        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crime].mean(axis=1).values, trendline="ols", \
                          color_continuous_scale=px.colors.sequential.Viridis)
     else:
         st.title("Correlation between "+crimes+" and poverty")
         st.write("""How""", crimes, """ per capita correlate with percentage of population under poverty""")
-        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols", color=df['PctPopUnderPov'].values ,\
+        fig = px.scatter(x=df['PctPopUnderPov'].values, y=df_new[crimes].values, trendline="ols", \
                          color_continuous_scale=px.colors.sequential.Viridis)
     fig.update_layout(xaxis_title="Percentage of population under poverty",
                   yaxis_title="Crimes per capita")
@@ -36,4 +36,4 @@ def population_crimes(crimes):
     return fig
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
-st.plotly_chart(population_crimes(select_crime), use_container_width=True)
+st.plotly_chart(poverty_crimes(select_crime), use_container_width=True)
