@@ -28,7 +28,7 @@ def population_crimes(crimes):
         st.write("""How""", crimes, """ per capita correlate with income""")
         fig = px.scatter(x=df['medIncome'].values, y=df_new[crimes].values, trendline="ols")
     fig.update_layout(xaxis_title="Median income",
-                  yaxis_title="Number of crimes")
+                  yaxis_title="Crimes per capita")
     fig.update_traces(marker_size=8)
     return fig
 
