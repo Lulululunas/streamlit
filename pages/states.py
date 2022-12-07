@@ -35,11 +35,11 @@ def state_crimes(crimes = crime):
     if crimes == 'all':
          st.title("Crimes in US states")
          st.write("""How crimes per capita correlate with states""")
-        df_states = df_new[crime + ['state']].groupby(['state']).mean()
+         df_states = df_new[crime + ['state']].groupby(['state']).mean()
     else:
          st.title("Level of "+crimes+" in US states")
          st.write("""How """,crimes,""" per capita correlate with states""")
-        df_states = df_new[crime + ['state']].groupby(['state']).mean().loc[:,[crimes]]
+         df_states = df_new[crime + ['state']].groupby(['state']).mean().loc[:,[crimes]]
     return df_states
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
