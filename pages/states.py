@@ -40,5 +40,5 @@ def state_crimes(crimes = crime):
     return df_states
 
 select_crime = st.sidebar.selectbox('Select:', ('all', 'murders', 'rapes', 'robberies', 'assaults', 'arsons', 'autoTheft', 'larcenies', 'burglaries'))
-    st.bar_chart(data = state_crimes(select_crime))
+st.bar_chart(data = state_crimes(select_crime))
  
