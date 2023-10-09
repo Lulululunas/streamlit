@@ -1,2 +1,2 @@
 # streamlit
-Some charts on streamlit
+Charts on streamlit
